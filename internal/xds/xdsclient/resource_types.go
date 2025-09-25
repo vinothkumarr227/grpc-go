@@ -42,7 +42,7 @@ func supportedResourceTypes(config *bootstrap.Config, gServerCfgMap map[xdsclien
 			TypeURL:                    version.V3ClusterURL,
 			TypeName:                   xdsresource.ClusterResourceTypeName,
 			AllResourcesRequiredInSotW: true,
-			Decoder:                    xdsresource.NewGenericClusterResourceTypeDecoder(config, gServerCfgMap),
+			Decoder:                    xdsresource.NewClusterResourceTypeDecoder(config, gServerCfgMap),
 		},
 		version.V3EndpointsURL: {
 			TypeURL:                    version.V3EndpointsURL,

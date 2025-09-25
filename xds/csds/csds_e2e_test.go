@@ -51,6 +51,7 @@ import (
 	v3routepb "github.com/envoyproxy/go-control-plane/envoy/config/route/v3"
 	v3statuspb "github.com/envoyproxy/go-control-plane/envoy/service/status/v3"
 	v3statuspbgrpc "github.com/envoyproxy/go-control-plane/envoy/service/status/v3"
+	clientimpl "google.golang.org/grpc/internal/xds/clients/xdsclient"
 
 	_ "google.golang.org/grpc/internal/xds/httpfilter/router" // Register the router filter
 )
@@ -95,7 +96,7 @@ func (nopRouteConfigWatcher) AmbientError(_ error, onDone func()) {
 
 type nopClusterWatcher struct{}
 
-func (nopClusterWatcher) ResourceChanged(_ *xdsresource.ClusterResourceData, onDone func()) {
+func (nopClusterWatcher) ResourceChanged(_ clientimpl.ResourceData, onDone func()) {
 	onDone()
 }
 func (nopClusterWatcher) ResourceError(_ error, onDone func()) {
